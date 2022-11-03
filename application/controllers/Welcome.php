@@ -14,6 +14,12 @@ class Welcome extends CI_Controller {
 		$data['list_daerah'] = $this->DataModel->get_daerah();
 		$data['tabel'] = $this->DataModel->get_tabel($daerah, $list_tanggal);
 		
+		if( isset($list_tanggal) ){
+			$tanggal = explode('.',$list_tanggal);
+			$data['tgla'] = $tanggal[0];
+			$data['tglz'] = $tanggal[1];			
+		}
+		
 		$this->load->view('welcome_message', $data);
 	} 
 	

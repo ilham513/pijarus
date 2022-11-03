@@ -81,7 +81,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		</div>
 		</form>
 	  </div>
-	  
+		
+		<?php if( isset($tgla) ): ?>
+		<div class="alert alert-warning alert-dismissible fade show" role="alert">
+		  Menampilkan daerah <?php foreach($tabel as $row){echo $row->area_name . " ";}?>
+		  -
+		  Tanggal <?=$tgla?> ~ <?=$tglz?>
+		  <a href="<?=site_url('')?>"><button type="button" class="btn-close"></button></a>
+		</div>
+		<?php endif; ?>
+			  
 	<div class="mb-3">
 	  <canvas id="myChart"></canvas>
 	</div>
