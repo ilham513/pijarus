@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 foreach ($data_produk as $row){
-	echo $row->area_name;
+	echo $row->sum / $row->total;
 }
 
 ?>
