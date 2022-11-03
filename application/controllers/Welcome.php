@@ -8,11 +8,11 @@ class Welcome extends CI_Controller {
 		$this->load->model('DataModel');
 	}
 
-	public function index($daerah=null)
+	public function index($daerah=null, $list_tanggal=null)
 	{
-		$data['data_produk'] = $this->DataModel->get_data($daerah);
+		$data['data_produk'] = $this->DataModel->get_data($daerah, $list_tanggal);
 		$data['list_daerah'] = $this->DataModel->get_daerah();
-		$data['tabel'] = $this->DataModel->get_tabel($daerah);
+		$data['tabel'] = $this->DataModel->get_tabel($daerah, $list_tanggal);
 		
 		$this->load->view('welcome_message', $data);
 	} 
@@ -20,7 +20,13 @@ class Welcome extends CI_Controller {
 	public function go()
 	{
 		$list_daerah = $this->input->post('list_daerah');
+		$tgla = $this->input->post('tgla');
+		$tglz = $this->input->post('tglz');
+		
 		$list_daerah = implode(".",$list_daerah);
-		redirect(site_url('Welcome/index/'.$list_daerah), 'refresh');
+		$list_tanggal = [$tgla, $tglz];
+		$list_tanggal = implode(".",$list_tanggal);
+		
+		redirect(site_url('Welcome/index/'.$list_daerah."/".$list_tanggal), 'refresh');
 	} 
 }

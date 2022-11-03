@@ -59,16 +59,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<div class="row">
 			<div class="col px-3">
 				<p class="mb-2">Filter Daerah <sup><button type="button" class="btn rounded-pill btn-sm btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="Gunakan ctrl untuk multiple choice">?</button><sup></p>
-				  <select name="list_daerah[]" class="form-select" multiple>
+				  <select required name="list_daerah[]" class="form-select" multiple>
 				  <?php foreach($list_daerah as $row): ?>
 					  <option value="<?= $row->area_id ?>"><?= $row->area_name ?></option>
 				  <?php endforeach; ?>
 				  </select>			
 			</div>
 			<div class="col">
-			  2 of 3
+				<div class="mb-2">
+				  <label for="exampleFormControlInput1" class="form-label">Tanggal Awal</label>
+				  <input name="tgla" required type="date" class="form-control" id="exampleFormControlInput1">
+				</div>
+				<div class="mb-2">
+				  <label for="exampleFormControlInput1" class="form-label">Tanggal Akhir</label>
+				  <input name="tglz" required type="date" class="form-control" id="exampleFormControlInput1">
+				</div>
 			</div>
-			<div class="col">
+			<div class="col ">
 			  <button type="submit" class="btn mt-2 btn-success">View</button>
 			</div>
 		</div>
