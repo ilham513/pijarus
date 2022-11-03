@@ -1,9 +1,5 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-foreach ($data_produk as $row){
-	echo $row->sum / $row->total;
-}
-
 ?>
 <!doctype html>
 <html lang="en">
@@ -56,15 +52,19 @@ foreach ($data_produk as $row){
 	  <table class="table table-striped table-hover">
 	  <thead class="table-dark">
 		<tr>
-		  <th scope="col">#</th>
 		  <th scope="col">Brand</th>
+		  <th scope="col">Persen</th>
+		  <th scope="col">Area Name</th>
 		</tr>
 	  </thead>
 	  <tbody>
+	<?php foreach($data_produk as $row): ?>
 		<tr>
-		  <th scope="row">1</th>
-		  <td>Mark</td>
+		  <td><?= $row->brand_name ?></td>
+		  <td><?= round($row->sum / $row->row * 100) . "%"?></td>
+		  <td><?= $row->area_name ?></td>
 		</tr>
+	<?php endforeach; ?>
 	  </tbody>
 	</table>
   </main>
